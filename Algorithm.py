@@ -22,7 +22,7 @@ class Algorithm:
                 writer.writeheader()
             writer.writerow(result)
 
-    def load_array_from_file(self, file_name : str):
+    def load_array_from_file(self, file_name : str, non_numpy_list=True):
         """
             Load the array from the sample data
 
@@ -30,6 +30,10 @@ class Algorithm:
                 file_name = is the path of .npy to be loaded
         """
         try:
+            if non_numpy_list:
+                self.arr = numpy.load(file_name).tolist()
+            else:
+                self.arr = numpy.load(file_name)
             self.arr = numpy.load(file_name).tolist()
         except FileNotFoundError:
             print(f"Error: File '{file_name}' not found.")

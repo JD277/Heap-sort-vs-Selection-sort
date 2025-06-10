@@ -18,4 +18,4 @@ def generar_y_guardar_arreglo(tamano=200_000, carpeta="datos", nombre_archivo="a
 
 if __name__ == "__main__":
     for i in range(1, 11):
-        generar_y_guardar_arreglo(tamano=200_000, nombre_archivo=f"Arreglo_{i}.npy")
+        generar_y_guardar_arreglo(tamano=20000, nombre_archivo=f"Arreglo_{i}.npy", carpeta="datosSS")

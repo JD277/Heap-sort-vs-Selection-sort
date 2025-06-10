@@ -1,50 +1,53 @@
+import numpy as np
 import time
 from datetime import datetime
-from Algorithm import Algorithm  # Clase base compartida
+from Algorithm import Algorithm  
 
-class SelectionSort(Algorithm):
+class SelectionSortNumpy(Algorithm):
     """
-    A class to sort arrays using the Selection Sort method
+    A class to sort arrays using Selection Sort with NumPy for better performance
     """
 
     def __init__(self):
-        self.comparisons = 0  
-        self.swaps = 0        
+        self.comparisons = 0
+        self.swaps = 0
+        self.arr = np.array([])  
 
     def selection_sort(self):
         """
-        Sorts the array using the Selection Sort algorithm
+        Sorts the array using Selection Sort algorithm with NumPy
         """
         n = len(self.arr)
 
         for i in range(n):
-            min_idx = i  
-
-           
-            for j in range(i + 1, n):
-                self.comparisons += 1  
-                if self.arr[j] < self.arr[min_idx]:
-                    min_idx = j
+            min_idx = i
 
             
+            min_val = self.arr[i]
+            for j in range(i + 1, n):
+                if self.arr[j] < min_val:
+                    min_val = self.arr[j]
+                    min_idx = j
+                self.comparisons += 1 
+
             if min_idx != i:
                 self.arr[i], self.arr[min_idx] = self.arr[min_idx], self.arr[i]
                 self.swaps += 1  
 
-    def sort(self, arr: str | list, id_prueba):
+    def sort(self, arr: str | np.ndarray, id_prueba):
         """
-        Sorts an array and logs performance data
+        Loads and sorts an array using Selection Sort with NumPy
 
         Args:
-            arr: Path to .npy file or list of numbers
+            arr: Path to .npy file or NumPy array
             id_prueba: Test ID for logging
         """
         if isinstance(arr, str):
-            if not self.load_array_from_file(arr):  # Método heredado
+            if not self.load_array_from_file(arr, False):  
                 print("Error loading array from file")
                 return None
         else:
-            self.arr = arr 
+            self.arr = np.array(arr, dtype=np.int64)  
 
         start = time.perf_counter()
         self.selection_sort()
@@ -61,18 +64,18 @@ class SelectionSort(Algorithm):
             "fecha_hora": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         }
 
-        self.save_result_csv(result=data, file_name="resultados_selection_sort_normal.csv")
+        self.save_result_csv(result=data, file_name="resultados_selection_sort_numpy.csv")
 
         print(f"[Prueba {id_prueba}] Tiempo: {duration:.4f} segundos | Comparaciones: {self.comparisons} | Intercambios: {self.swaps}")
 
-        
+
         self.comparisons = 0
         self.swaps = 0
 
-        return self.arr
+        return self.arr.copy()  
     
 if __name__ == "__main__":
-    selection_sort = SelectionSort()
-
-    for i in range(1, 11):
-        selection_sort.sort(f"datosSS/Arreglo_{i}.npy", i) 
+    selection_sort = SelectionSortNumpy()
+    for i in range (3):
+        for i in range(1, 11):
+            selection_sort.sort(f"datosSS/Arreglo_{i}.npy", i)
