@@ -1,7 +1,4 @@
-import numpy
 import time
-import csv
-import os
 from datetime import datetime
 from Algorithm import Algorithm 
 class HeapSort(Algorithm):
@@ -17,7 +14,7 @@ class HeapSort(Algorithm):
                 A fuction that heapfy an array to be sorted by the Heap method
 
             **Args:**
-                n = Lenght of the array
+                n = Length of the array
                 i = index of the array
         """
         largest = i
@@ -67,7 +64,7 @@ class HeapSort(Algorithm):
         self.heap_sort()
         end = time.perf_counter()
         data = {
-            "prueba_id": id,
+            "Arreglo ordenado": id,
             "tamano_arreglo": len(self.arr),
             "tiempo_segundos": round(end - begining, 6),
             "llamadas_heapify": self.calls,
@@ -75,10 +72,13 @@ class HeapSort(Algorithm):
         }
         self.save_result_csv(result=data,file_name="resultados_heap_sort.csv")
         print(f"[Prueba {id}] Tiempo: {end - begining:.4f} segundos | Llamadas a heapify: {self.calls}")
+        self.calls = 0
         return self.arr
 
 # Example usage
 if __name__ == "__main__":
     heap_sort = HeapSort()
-    arr = numpy.load("datos/Arreglo_1.npy").tolist()
-    heap_sort.sort(arr, 1)   
+    for i in range(3):
+        for i in range(1, 11):
+            heap_sort.sort(f"./datos/Arreglo_{i}.npy", i)
+        

@@ -7,7 +7,7 @@ class Algorithm:
     def __init__(self):
         self.arr = None
     
-    def save_result_csv(self,result:dict,file_name = "resultados.csv"):
+    def save_result_csv(self,result:dict,file_name : str = "resultados.csv"):
         """
             Add new row to a csv file with critical data about the output
 
@@ -22,7 +22,7 @@ class Algorithm:
                 writer.writeheader()
             writer.writerow(result)
 
-    def load_array_from_file(self, file_name):
+    def load_array_from_file(self, file_name : str):
         """
             Load the array from the sample data
 
