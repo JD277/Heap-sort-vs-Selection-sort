@@ -70,7 +70,7 @@ class HeapSort(Algorithm):
             "llamadas_heapify": self.calls,
             "fecha_hora": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         }
-        self.save_result_csv(result=data,file_name="resultados_heap_sort.csv")
+        self.save_result_csv(result=data,file_name="resultados_heap_sort_LessData.csv")
         print(f"[Prueba {id}] Tiempo: {end - begining:.4f} segundos | Llamadas a heapify: {self.calls}")
         self.calls = 0
         return self.arr
@@ -80,5 +80,5 @@ if __name__ == "__main__":
     heap_sort = HeapSort()
     for i in range(3):
         for i in range(1, 11):
-            heap_sort.sort(f"./datos/Arreglo_{i}.npy", i)
+            heap_sort.sort(f"./datosSS/Arreglo_{i}.npy", i)
         

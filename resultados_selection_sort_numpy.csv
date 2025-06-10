@@ -1,4 +1,4 @@
-prueba_id,tamano_arreglo,tiempo_segundos,comparaciones,intercambios,fecha_hora
+Arreglo_ordenado,tamano_arreglo,tiempo_segundos,comparaciones,intercambios,fecha_hora
 1,20000,29.287947,199990000,19996,2025-06-10 02:19:56
 2,20000,29.925528,199990000,19991,2025-06-10 02:20:26
 3,20000,30.582852,199990000,19986,2025-06-10 02:20:57
