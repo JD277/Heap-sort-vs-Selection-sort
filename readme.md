@@ -6,7 +6,8 @@ Este proyecto compara el rendimiento de dos algoritmos clásicos de ordenamiento
 - **Selection Sort** (simple pero ineficiente, O(n²))
 
 El objetivo es evaluar su desempeño en términos de **tiempo de ejecución** y **número de operaciones realizadas** sobre arreglos de gran tamaño generados con `numpy`.
-vide explicativo: https://drive.google.com/file/d/1dB48E92MYSEp2lgxDg-WYta5YSBhR4qN/view?usp=sharing
+
+video explicativo: https://drive.google.com/file/d/1dB48E92MYSEp2lgxDg-WYta5YSBhR4qN/view?usp=sharing
 
 ---
 
